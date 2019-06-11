@@ -35,7 +35,8 @@ Vue.component('csv-importer', require('./components/CsvImporter.vue').default);
 	    el: '#app',
 	    data:{
 	    	customerName: '',
-	    	customerData: null
+	    	customerData: null,
+	    	customerPricing: null,
 	    }
 	});
 

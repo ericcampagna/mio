@@ -51,7 +51,11 @@
                      </div>
                       <label for="exampleFormControlFile1">Customer Data File</label>
                        
-                      <csv-importer v-model="customerData" ref="importer" :map-fields="['Part Number', 'QOH', 'Previous 12M', 'Last 12M', 'Current Price']" ></csv-importer>
+                      <csv-importer v-model="customerData" ref="importer" :map-fields="['Part Number', 'QOH', 'Previous 12M', 'Last 12M', 'Current Price']" load-btn-text="Load Data File" ></csv-importer>
+
+                      <csv-importer v-model="customerPricing" ref="importer" :map-fields="['MTR Part Number', 'Quoted Price']" load-btn-text="Load Price File" ></csv-importer>
+
+                      <button class="btn btn-success btn-block">GO <i class="fas fa-arrow-right"></i></button>
                    </form>
                    
                 </div>

@@ -1760,10 +1760,7 @@ __webpack_require__.r(__webpack_exports__);
       type: String
     },
     mapFields: {
-      required: false,
-      "default": function _default() {
-        return ['part', 'qoh', 'prev12', 'last12', 'cPrice'];
-      }
+      required: true
     },
     callback: {
       type: Function,
@@ -49575,7 +49572,8 @@ window.addEventListener('load', function () {
     el: '#app',
     data: {
       customerName: '',
-      customerData: null
+      customerData: null,
+      customerPricing: null
     }
   });
   var topbar = new Vue({

@@ -1,6 +1,8 @@
 
 @extends('layouts.main-layout')
 
+@section('title', 'Start')
+
 @section('sidebar_layout')
   @yield('sidebar', View::make('sidebar'))
 @endsection
@@ -43,32 +45,15 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <div class="chart-area">
                    <form>
                      <div class="form-group">
-                        <input type="text" class="form-control" id="customerName" aria-describedby="customerHelp" name="" placeholder="Customer Name">
+                        <input type="text" class="form-control" id="customerName" v-model="customerName" aria-describedby="customerHelp" name="" placeholder="Customer Name">
                      </div>
-                     <div class="form-group">
                       <label for="exampleFormControlFile1">Customer Data File</label>
-                      <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                    </div>
-                    <label>Pricing</label>
-                    <select class="form-control form-control-lg" id="pricingSelect">
-                      <option>APW</option>
-                      <option>Alliance</option>
-                      <option>MotoRad Gold</option>
-                      <option>MotoRad Silver</option>
-                      <option value="custom">Custom...</option>
-                    </select>
-                     <div class="form-group" id="customPricing" style="display:none;">
-                      <label for="exampleFormControlFile1">Customer Pricing File</label>
-                      <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                    </div>
-                    <br>
-                    <button type="submit" class="btn btn-primary my-1">Run...</button>
+                       
+                      <csv-importer v-model="customerData" ref="importer" :map-fields="['Part Number', 'QOH', 'Previous 12M', 'Last 12M', 'Current Price']" ></csv-importer>
                    </form>
                    
-                  </div>
                 </div>
               </div>
             </div>
@@ -83,10 +68,11 @@
 @section('addToFooter')
   <script>
     $(document).ready(function () {
+      $('#customPricing').hide();
       $('#pricingSelect').change(function() {
           opt = $(this).val();
           if (opt=="custom") {
-              $('#customPricing').show()
+              $('#customPricing').show();
             }
       });
     });

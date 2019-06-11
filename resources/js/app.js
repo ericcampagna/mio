@@ -6,6 +6,8 @@
 window.$ = window.jQuery = require('jquery'); 
 require('bootstrap');
 require('../vendor/jquery-easing/jquery.easing.min.js');
+require('../vendor/datatables/jquery.dataTables.min.js');
+require('../vendor/datatables/dataTables.bootstrap4.min.js');
 require('./sb-admin-2.js');
 
 
@@ -34,17 +36,34 @@ Vue.component('csv-importer', require('./components/CsvImporter.vue').default);
 	const app = new Vue({
 	    el: '#app',
 	    data:{
-	    	customerName: '',
-	    	customerData: null,
-	    	customerPricing: null,
+	    	user: 'Chad Houchin',
+	    	showDataForm: true,
+	    	customer: {
+	    		name: '',
+	    		data: null,
+	    		pricing: null,
+	    		size: 'Medium',
+	    		type: 'Change',
+	    		error: {
+	    			name: false
+	    		}
+	    	},
+	    	mio: {
+
+	    	}
+
+	    },
+	    methods:{
+	    	loadAll: function(event){
+				event.preventDefault();
+				if(!this.customer.name){
+					this.customer.error.name = true;
+					return;
+				}
+				this.showDataForm = false;
+	    	}
 	    }
 	});
 
-	const topbar = new Vue({
-		el: '#topbar',
-		data:{
-			user: 'Chad Houchin'
-		}
-	})
 
 });

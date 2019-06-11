@@ -9,6 +9,7 @@
         line-height: 1.5;
       }
     }
+    transition: opacity 1s ease-out;
   }
   // Collapsable Card Styling
   .card-header[data-toggle="collapse"] {

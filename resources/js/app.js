@@ -31,12 +31,13 @@ Vue.component('csv-importer', require('./components/CsvImporter.vue').default);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
- window.addEventListener('load', function () {
+ // window.addEventListener('load', function () {
+	import axios from 'axios';
 
 	const app = new Vue({
 	    el: '#app',
 	    data:{
-	    	user: 'Chad Houchin',
+	    	user: 'Eric Campagna',
 	    	showDataForm: true,
 	    	customer: {
 	    		name: '',
@@ -61,9 +62,26 @@ Vue.component('csv-importer', require('./components/CsvImporter.vue').default);
 					return;
 				}
 				this.showDataForm = false;
+
+				var count = Object.keys(this.customer.data).length;
+
+				$.each(this.customer.data, function(key, data) {
+					axios({
+						method: 'post',
+						url: '/interchange/get-part',
+						contentType: 'application/json',
+						data: {
+							pn: data['Part Number']
+						}
+					})
+						.then(function (response) {
+							data['MTR PN'] = response.data.mtr_pn;
+							console.log(response.data.mtr_pn);
+						});
+				});
 	    	}
 	    }
 	});
 
 
-});
+// });

@@ -64820,9 +64820,13 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -64857,39 +64861,53 @@ Vue.component('csv-importer', __webpack_require__(/*! ./components/CsvImporter.v
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+// window.addEventListener('load', function () {
 
-window.addEventListener('load', function () {
-  var app = new Vue({
-    el: '#app',
-    data: {
-      user: 'Chad Houchin',
-      showDataForm: true,
-      customer: {
-        name: '',
-        data: null,
-        pricing: null,
-        size: 'Medium',
-        type: 'Change',
-        error: {
-          name: false
-        }
-      },
-      mio: {}
-    },
-    methods: {
-      loadAll: function loadAll(event) {
-        event.preventDefault();
 
-        if (!this.customer.name) {
-          this.customer.error.name = true;
-          return;
-        }
-
-        this.showDataForm = false;
+var app = new Vue({
+  el: '#app',
+  data: {
+    user: 'Eric Campagna',
+    showDataForm: true,
+    customer: {
+      name: '',
+      data: null,
+      pricing: null,
+      size: 'Medium',
+      type: 'Change',
+      error: {
+        name: false
       }
+    },
+    mio: {}
+  },
+  methods: {
+    loadAll: function loadAll(event) {
+      event.preventDefault();
+
+      if (!this.customer.name) {
+        this.customer.error.name = true;
+        return;
+      }
+
+      this.showDataForm = false;
+      var count = Object.keys(this.customer.data).length;
+      $.each(this.customer.data, function (key, data) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default()({
+          method: 'post',
+          url: '/interchange/get-part',
+          contentType: 'application/json',
+          data: {
+            pn: data['Part Number']
+          }
+        }).then(function (response) {
+          data['MTR PN'] = response.data.mtr_pn;
+          console.log(response.data.mtr_pn);
+        });
+      });
     }
-  });
-});
+  }
+}); // });
 
 /***/ }),
 

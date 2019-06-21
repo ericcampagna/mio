@@ -14,3 +14,68 @@
 Route::get('/', function () {
     return view('start');
 });
+
+Route::Get('part/{pn}', function ($pn) {
+	$part = App\Part::where('mtr_pn', '=', $pn)->first();
+	$part->categories = $part->category_tree($part->category_id);
+
+
+
+	echo $part->mtr_pn ." -> ". $part->categories->line->name ." -> ". $part->categories->cat->name ." -> ". $part->categories->maxCat->name ." -> ". $part->categories->minCat->name;
+
+	
+	// echo "<h1>".$part->mtr_pn/"</h1>";
+});
+
+Route::get('interchange/orphans', function() {
+	$parts = App\Interchange::where('mtr_PN', '!=', '')->whereNull('part_id')->get();
+
+	
+	foreach ($parts as $key => $part) {
+		$is_mtr = App\Part::where('mtr_pn', '=', $part->interchangesPN)->first();
+		if(!$is_mtr)
+		{
+			if($part->mtr_PN == 'NI' || $part->mtr_PN == 'NA')
+			{
+				$parts->forget($key);
+			}
+			else{
+				echo $part->interchangesPN .' -> ' .$part->mtr_PN . ' -> ' .$part->part_id .'<br>';
+			}
+			
+		}
+		else
+		{
+			$parts->forget($key);
+		}
+		
+	}
+	$total = count($parts);
+	echo $total;
+	
+});
+
+Route::get('interchange/{pn}', function($pn) {
+	$is_mtr = App\Part::where('mtr_pn_stripped', '=', str_replace('-', '', $pn))->first();
+	if($is_mtr)
+	{
+		echo 'Already a Motorad Part Number';
+	}
+	else
+	{
+		$interchange = App\Interchange::where('interchangesPN', '=', $pn)->first();
+
+		$interchange->part;
+		if($interchange->part)
+		{
+			echo $interchange->interchangesPN .' -> '. $interchange->part->mtr_pn;
+		}
+		else{
+			echo '<p>No Interchange Available for <b><i>' .$pn. '</i></b></p>';
+		}
+	}
+
+});
+
+Route::post('/interchange/get-part', 'InterchangesController@getPart');
+

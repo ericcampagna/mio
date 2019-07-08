@@ -10,29 +10,55 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+/**
+ *
+ * All routes outside of Authentication
+ *
+ */
+Route::get('/', function () {
+	return view('welcome');
+});
+/*----------  Authentication via Sales Force   ----------*/
+
 Route::get('/authenticate', function()
 {
     return Forrest::authenticate();
-    return Redirect::to('/sales');
-
 });
 
-Route::get('/callback', function()
+Route::get('/callback', 'Login@checkUser');
+
+Route::get('logout', function ()
 {
-    Forrest::callback();
+	Forrest::revoke();
+	Session::forget('forrest_token');
+	return redirect('/');
+});
 
-    return Redirect::to('/');
+/*----------  Middleware group for Authenticated Users   ----------*/
+Route::middleware(['sf.login'])->group(function () {
+	Route::get('/start', function () {
+	    return view('start');
+	});
+
+	Route::get('api-debug', function () {
+	return Forrest::identity();
+	});
+
+	Route::get('/sales', function () {
+		// Chad Ward User Id for testing
+		$id = '0051K000007qwOiQAI';
+	    $data = Forrest::query('SELECT Id, Name, OwnerId, StageName, FiscalYear  FROM Opportunity WHERE FiscalYear=2019');
+	    //$data = Forrest::query('SELECT Id, Name, Email FROM User');
+	    return $data;
+	});
+
+
+}); //End Salesforce Middleware
+
+Route::get('session', function () {
+	return Session::all();
 });
-Route::get('/', function () {
-    return view('start');
-});
-Route::get('/sales', function () {
-	// Chad Ward User Id for testing
-	$id = '0051K000007qwOiQAI';
-    $data = Forrest::query('SELECT Id, Name, OwnerId, StageName, FiscalYear  FROM Opportunity WHERE FiscalYear=2019 AND OwnerId='.$id);
-    //$data = Forrest::query('SELECT Id, Name, Email FROM User');
-    return $data;
-});
+
 
 Route::Get('part/{pn}', function ($pn) {
 	$part = App\Part::where('mtr_pn', '=', $pn)->first();

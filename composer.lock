@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bd9d8ffd02597e52267c8f2cba37b617",
+    "content-hash": "f8ed0b051715b2d77091037e3b561e97",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1737,158 +1737,6 @@
             "time": "2018-07-19T23:38:55+00:00"
         },
         {
-            "name": "rob-lester-jr04/eloquent-sales-force",
-            "version": "1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/roblesterjr04/EloquentSalesForce.git",
-                "reference": "190c141497579a18e814883e285b669cf1e434b7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/roblesterjr04/EloquentSalesForce/zipball/190c141497579a18e814883e285b669cf1e434b7",
-                "reference": "190c141497579a18e814883e285b669cf1e434b7",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": ">=5.5",
-                "omniphx/forrest": "2.*",
-                "php": ">=7.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "~3.6.0",
-                "phpunit/phpunit": "~7.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Lester\\EloquentSalesForce\\ServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Lester\\EloquentSalesForce\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Robert Lester",
-                    "email": "roblesterjr04@gmail.com"
-                }
-            ],
-            "description": "An eloquent model data source for sales force",
-            "keywords": [
-                "eloquent",
-                "force",
-                "forrest",
-                "laravel",
-                "model",
-                "sales",
-                "salesforce"
-            ],
-            "time": "2019-06-11T15:19:32+00:00"
-        },
-        {
-            "name": "shubinmi/helpers",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/shubinmi/helpers.git",
-                "reference": "afb7e87746ffa7964411a452598fa45154f59082"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/shubinmi/helpers/zipball/afb7e87746ffa7964411a452598fa45154f59082",
-                "reference": "afb7e87746ffa7964411a452598fa45154f59082",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "BaseHelpers\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Maxim Shubin",
-                    "email": "shubinmi@gmail.com",
-                    "homepage": "https://github.com/shubinmi",
-                    "role": "Founder and cyclist"
-                }
-            ],
-            "description": "Base daily helpers for fast reusing.",
-            "homepage": "https://github.com/shubinmi/helpers",
-            "keywords": [
-                "base",
-                "common",
-                "helpers"
-            ],
-            "time": "2017-06-27T14:28:04+00:00"
-        },
-        {
-            "name": "shubinmi/salesforce-bulk-api",
-            "version": "1.1.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/shubinmi/salesforce-bulk-api.git",
-                "reference": "7ff4f3478cc7895aa3d1c0df2afcd8247e64ee2b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/shubinmi/salesforce-bulk-api/zipball/7ff4f3478cc7895aa3d1c0df2afcd8247e64ee2b",
-                "reference": "7ff4f3478cc7895aa3d1c0df2afcd8247e64ee2b",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.2",
-                "php": ">=5.6",
-                "shubinmi/helpers": "^1.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^5.7"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SalesforceBulkApi\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Maxim Shubin",
-                    "email": "shubinmi@gmail.com",
-                    "homepage": "https://github.com/shubinmi",
-                    "role": "Founder and cyclist"
-                }
-            ],
-            "description": "Client for Salesforce Bulk Api. Easy way to manipulate your Salesforce data.",
-            "homepage": "https://github.com/shubinmi/salesforce-bulk-api",
-            "keywords": [
-                "api",
-                "bulk",
-                "client",
-                "salesforce"
-            ],
-            "time": "2017-12-12T20:23:15+00:00"
-        },
-        {
             "name": "swiftmailer/swiftmailer",
             "version": "v6.2.1",
             "source": {
@@ -3480,16 +3328,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.4.0",
+            "version": "2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "1a1a1044ad00e285bd2825fac4c3a0443d90ad33"
+                "reference": "6fb502c23885701a991b0bba974b1a8eb6673577"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/1a1a1044ad00e285bd2825fac4c3a0443d90ad33",
-                "reference": "1a1a1044ad00e285bd2825fac4c3a0443d90ad33",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/6fb502c23885701a991b0bba974b1a8eb6673577",
+                "reference": "6fb502c23885701a991b0bba974b1a8eb6673577",
                 "shasum": ""
             },
             "require": {
@@ -3537,7 +3385,7 @@
                 "throwable",
                 "whoops"
             ],
-            "time": "2019-06-23T09:00:00+00:00"
+            "time": "2019-07-04T09:00:00+00:00"
         },
         {
             "name": "fzaninotto/faker",
@@ -4336,16 +4184,16 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "c99e3be9d3e85f60646f152f9002d46ed7770d18"
+                "reference": "c4a66b97f040e3e20b3aa2a243230a1c3a9f7c8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/c99e3be9d3e85f60646f152f9002d46ed7770d18",
-                "reference": "c99e3be9d3e85f60646f152f9002d46ed7770d18",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/c4a66b97f040e3e20b3aa2a243230a1c3a9f7c8c",
+                "reference": "c4a66b97f040e3e20b3aa2a243230a1c3a9f7c8c",
                 "shasum": ""
             },
             "require": {
@@ -4381,7 +4229,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2018-10-30T05:52:18+00:00"
+            "time": "2019-07-08T05:24:54+00:00"
         },
         {
             "name": "phpunit/phpunit",

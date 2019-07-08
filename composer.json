@@ -12,9 +12,7 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
-        "omniphx/forrest": "2.*",
-        "rob-lester-jr04/eloquent-sales-force": "^1.3",
-        "shubinmi/salesforce-bulk-api": "^1.1"
+        "omniphx/forrest": "2.*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

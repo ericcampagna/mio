@@ -10,9 +10,28 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/authenticate', function()
+{
+    return Forrest::authenticate();
+    return Redirect::to('/sales');
 
+});
+
+Route::get('/callback', function()
+{
+    Forrest::callback();
+
+    return Redirect::to('/');
+});
 Route::get('/', function () {
     return view('start');
+});
+Route::get('/sales', function () {
+	// Chad Ward User Id for testing
+	$id = '0051K000007qwOiQAI';
+    $data = Forrest::query('SELECT Id, Name, OwnerId, StageName, FiscalYear  FROM Opportunity WHERE FiscalYear=2019 AND OwnerId='.$id);
+    //$data = Forrest::query('SELECT Id, Name, Email FROM User');
+    return $data;
 });
 
 Route::Get('part/{pn}', function ($pn) {

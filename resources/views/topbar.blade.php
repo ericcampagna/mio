@@ -51,8 +51,8 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">@{{ user }}</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/user/erondu/60x60">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Session::get('user_data')['display_name'] }}</span>
+                <img class="img-profile rounded-circle" src="{{ Session::get('user_data')['photos']['thumbnail'] }}.jpg">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

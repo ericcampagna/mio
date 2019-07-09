@@ -1,7 +1,7 @@
 
 @extends('layouts.main-layout')
 
-@section('title', 'Start')
+@section('title', 'Sale Dashboard')
 
 @section('sidebar_layout')
   @yield('sidebar', View::make('sidebar'))

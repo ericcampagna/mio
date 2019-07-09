@@ -40,27 +40,23 @@ Route::middleware(['sf.login'])->group(function () {
 	    return view('start');
 	});
 
-	Route::get('api-debug', function () {
-	return Forrest::identity();
-	});
-
-	Route::get('/sales', function () {
-		// Chad Ward User Id for testing
-		$id = '0051K000007qwOiQAI';
-	    $data = Forrest::query('SELECT Id, Name, OwnerId, StageName, FiscalYear  FROM Opportunity WHERE FiscalYear=2019');
-	    //$data = Forrest::query('SELECT Id, Name, Email FROM User');
-	    return $data;
-	});
+	Route::get('/sales', 'DashboardController@show');
 
 
 }); //End Salesforce Middleware
 
-Route::get('session', function () {
-	return Session::all();
-});
 
+if(App::environment('development'))
+{
+	Route::get('session', function () {
+		return Session::all();
+	});
 
-Route::Get('part/{pn}', function ($pn) {
+	Route::get('api-debug', function () {
+	return Forrest::identity();
+	});
+
+	Route::Get('part/{pn}', function ($pn) {
 	$part = App\Part::where('mtr_pn', '=', $pn)->first();
 	$part->categories = $part->category_tree($part->category_id);
 
@@ -121,6 +117,9 @@ Route::get('interchange/{pn}', function($pn) {
 	}
 
 });
+}
 
-Route::post('/interchange/get-part', 'InterchangesController@getPart');
+
+
+
 

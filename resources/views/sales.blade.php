@@ -47,7 +47,7 @@
                   </div>
                   <!-- Card Body -->
                   <div class="card-body">
-                     <sales-chart></sales-chart>
+                     <test-chart></test-chart>
                   </div>
                 </div>
               </transition>

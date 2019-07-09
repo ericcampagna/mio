@@ -22,6 +22,6 @@ class DashboardController extends Controller
     		$opportunity->account;
     		$opportunity->contact;
     	}
-    	return $opportunities;
+    	return view('sales');
     }
 }

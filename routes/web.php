@@ -124,6 +124,11 @@ if(App::environment('development'))
 		$random_number_array = array_slice($random_number_array ,0,12);
 		return response()->json($random_number_array);
 	});
+
+	Route::get('data/opportunities', 'DashboardController@opportunitiesData');
+	Route::get('data/opportunities/all', 'DashboardController@opportunitiesDataAll');
+
+	Route::get('data/loggedCalls/{type}', 'DashboardController@loggedCalls');
 }
 
 

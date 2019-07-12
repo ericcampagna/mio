@@ -1921,10 +1921,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TestChart.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/TestChart.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SalesDashboard/CallChart.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SalesDashboard/CallChart.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1932,7 +1932,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Charts_LineChart_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Charts/LineChart.js */ "./resources/js/components/Charts/LineChart.js");
+/* harmony import */ var _Charts_DoughnutChart_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Charts/DoughnutChart.js */ "./resources/js/components/Charts/DoughnutChart.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -1950,24 +1950,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'LineChartContainer',
+  name: 'CallChart',
   components: {
-    LineChart: _Charts_LineChart_js__WEBPACK_IMPORTED_MODULE_1__["default"]
+    DoughnutChart: _Charts_DoughnutChart_js__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
       loaded: false,
-      chartdata: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
-        datasets: [{
-          label: 'Numbers',
-          backgroundColor: '#f87979',
-          data: null
-        }]
-      },
+      chartdata: null,
       options: {
-        responsive: true,
-        maintainAspectRation: false
+        title: {
+          display: false,
+          position: 'top',
+          text: 'Calls by Type'
+        },
+        responsive: false,
+        maintainAspectRation: true
       }
     };
   },
@@ -1983,7 +1981,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               this.loaded = false;
               _context.prev = 1;
               _context.next = 4;
-              return fetch('chart/testapi');
+              return fetch('data/loggedCalls/chart');
 
             case 4:
               response = _context.sent;
@@ -1992,7 +1990,129 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
             case 7:
               rData = _context.sent;
-              this.chartdata.datasets[0].data = rData;
+              this.chartdata = rData;
+              this.loaded = true;
+              _context.next = 15;
+              break;
+
+            case 12:
+              _context.prev = 12;
+              _context.t0 = _context["catch"](1);
+              console.error(_context.t0);
+
+            case 15:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, this, [[1, 12]]);
+    }));
+
+    function mounted() {
+      return _mounted.apply(this, arguments);
+    }
+
+    return mounted;
+  }()
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SalesDashboard/OpportunitiesChart.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SalesDashboard/OpportunitiesChart.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Charts_BarChart_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Charts/BarChart.js */ "./resources/js/components/Charts/BarChart.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+function float2dollar(value) {
+  return "$ " + value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+}
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'OpportunitiesChart',
+  components: {
+    BarChart: _Charts_BarChart_js__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  data: function data() {
+    return {
+      loaded: false,
+      chartdata: null,
+      options: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          position: 'top',
+          text: 'Total Amount in Dollars'
+        },
+        responsive: false,
+        maintainAspectRation: true,
+        tooltips: {
+          callbacks: {
+            label: function label(tooltipItems, data) {
+              return "$" + tooltipItems.yLabel.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+          }
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              callback: function callback(value, index, values) {
+                return float2dollar(value);
+              }
+            }
+          }]
+        }
+      }
+    };
+  },
+  mounted: function () {
+    var _mounted = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var response, rData;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              this.loaded = false;
+              _context.prev = 1;
+              _context.next = 4;
+              return fetch('data/opportunities');
+
+            case 4:
+              response = _context.sent;
+              _context.next = 7;
+              return response.json();
+
+            case 7:
+              rData = _context.sent;
+              this.chartdata = rData;
               this.loaded = true;
               _context.next = 15;
               break;
@@ -86107,10 +86227,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TestChart.vue?vue&type=template&id=98337ade&":
-/*!************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/TestChart.vue?vue&type=template&id=98337ade& ***!
-  \************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SalesDashboard/CallChart.vue?vue&type=template&id=2d876484&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SalesDashboard/CallChart.vue?vue&type=template&id=2d876484& ***!
+  \***************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -86127,7 +86247,42 @@ var render = function() {
     { staticClass: "container" },
     [
       _vm.loaded
-        ? _c("line-chart", {
+        ? _c("doughnut-chart", {
+            attrs: { chartdata: _vm.chartdata, options: _vm.options }
+          })
+        : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SalesDashboard/OpportunitiesChart.vue?vue&type=template&id=26fe210e&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SalesDashboard/OpportunitiesChart.vue?vue&type=template&id=26fe210e& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _vm.loaded
+        ? _c("bar-chart", {
             attrs: { chartdata: _vm.chartdata, options: _vm.options }
           })
         : _vm._e()
@@ -98287,9 +98442,10 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_TestChart_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/TestChart.vue */ "./resources/js/components/TestChart.vue");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_SalesDashboard_OpportunitiesChart_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/SalesDashboard/OpportunitiesChart.vue */ "./resources/js/components/SalesDashboard/OpportunitiesChart.vue");
+/* harmony import */ var _components_SalesDashboard_CallChart_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/SalesDashboard/CallChart.vue */ "./resources/js/components/SalesDashboard/CallChart.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -98317,11 +98473,13 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
  */
 // Custom Componets 
 
+
  // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('csv-importer', __webpack_require__(/*! ./components/CsvImporter.vue */ "./resources/js/components/CsvImporter.vue")["default"]);
-Vue.component('test-chart', _components_TestChart_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
+Vue.component('opportunities-chart', _components_SalesDashboard_OpportunitiesChart_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
+Vue.component('call-chart', _components_SalesDashboard_CallChart_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -98359,7 +98517,7 @@ var app = new Vue({
       this.showDataForm = false;
       var count = Object.keys(this.customer.data).length;
       $.each(this.customer.data, function (key, data) {
-        axios__WEBPACK_IMPORTED_MODULE_1___default()({
+        axios__WEBPACK_IMPORTED_MODULE_2___default()({
           method: 'post',
           url: '/interchange/get-part',
           contentType: 'application/json',
@@ -98377,19 +98535,55 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ "./resources/js/components/Charts/LineChart.js":
-/*!*****************************************************!*\
-  !*** ./resources/js/components/Charts/LineChart.js ***!
-  \*****************************************************/
+/***/ "./resources/js/components/Charts/BarChart.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/Charts/BarChart.js ***!
+  \****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_chartjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-chartjs */ "./node_modules/vue-chartjs/es/index.js");
+/*=====================================================
+=            Bar Chart Built from Chart.js            =
+=====================================================*/
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  "extends": vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["Line"],
+  "extends": vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["Bar"],
+  props: {
+    chartdata: {
+      type: Object,
+      "default": null
+    },
+    options: {
+      type: Object,
+      "default": null
+    }
+  },
+  mounted: function mounted() {
+    this.renderChart(this.chartdata, this.options);
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/Charts/DoughnutChart.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/Charts/DoughnutChart.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_chartjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-chartjs */ "./node_modules/vue-chartjs/es/index.js");
+/*=====================================================
+=            Doughnut Chart Built from Chart.js            =
+=====================================================*/
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  "extends": vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["Doughnut"],
   props: {
     chartdata: {
       type: Object,
@@ -98476,18 +98670,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/TestChart.vue":
-/*!***********************************************!*\
-  !*** ./resources/js/components/TestChart.vue ***!
-  \***********************************************/
+/***/ "./resources/js/components/SalesDashboard/CallChart.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/SalesDashboard/CallChart.vue ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _TestChart_vue_vue_type_template_id_98337ade___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TestChart.vue?vue&type=template&id=98337ade& */ "./resources/js/components/TestChart.vue?vue&type=template&id=98337ade&");
-/* harmony import */ var _TestChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TestChart.vue?vue&type=script&lang=js& */ "./resources/js/components/TestChart.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _CallChart_vue_vue_type_template_id_2d876484___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CallChart.vue?vue&type=template&id=2d876484& */ "./resources/js/components/SalesDashboard/CallChart.vue?vue&type=template&id=2d876484&");
+/* harmony import */ var _CallChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CallChart.vue?vue&type=script&lang=js& */ "./resources/js/components/SalesDashboard/CallChart.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -98496,9 +98690,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _TestChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _TestChart_vue_vue_type_template_id_98337ade___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _TestChart_vue_vue_type_template_id_98337ade___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _CallChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CallChart_vue_vue_type_template_id_2d876484___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CallChart_vue_vue_type_template_id_2d876484___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -98508,38 +98702,107 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/TestChart.vue"
+component.options.__file = "resources/js/components/SalesDashboard/CallChart.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/TestChart.vue?vue&type=script&lang=js&":
-/*!************************************************************************!*\
-  !*** ./resources/js/components/TestChart.vue?vue&type=script&lang=js& ***!
-  \************************************************************************/
+/***/ "./resources/js/components/SalesDashboard/CallChart.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/SalesDashboard/CallChart.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TestChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./TestChart.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TestChart.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TestChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CallChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./CallChart.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SalesDashboard/CallChart.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CallChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/TestChart.vue?vue&type=template&id=98337ade&":
-/*!******************************************************************************!*\
-  !*** ./resources/js/components/TestChart.vue?vue&type=template&id=98337ade& ***!
-  \******************************************************************************/
+/***/ "./resources/js/components/SalesDashboard/CallChart.vue?vue&type=template&id=2d876484&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/SalesDashboard/CallChart.vue?vue&type=template&id=2d876484& ***!
+  \*********************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TestChart_vue_vue_type_template_id_98337ade___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./TestChart.vue?vue&type=template&id=98337ade& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TestChart.vue?vue&type=template&id=98337ade&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TestChart_vue_vue_type_template_id_98337ade___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CallChart_vue_vue_type_template_id_2d876484___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./CallChart.vue?vue&type=template&id=2d876484& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SalesDashboard/CallChart.vue?vue&type=template&id=2d876484&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CallChart_vue_vue_type_template_id_2d876484___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TestChart_vue_vue_type_template_id_98337ade___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CallChart_vue_vue_type_template_id_2d876484___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/SalesDashboard/OpportunitiesChart.vue":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/SalesDashboard/OpportunitiesChart.vue ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _OpportunitiesChart_vue_vue_type_template_id_26fe210e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OpportunitiesChart.vue?vue&type=template&id=26fe210e& */ "./resources/js/components/SalesDashboard/OpportunitiesChart.vue?vue&type=template&id=26fe210e&");
+/* harmony import */ var _OpportunitiesChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OpportunitiesChart.vue?vue&type=script&lang=js& */ "./resources/js/components/SalesDashboard/OpportunitiesChart.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _OpportunitiesChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _OpportunitiesChart_vue_vue_type_template_id_26fe210e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _OpportunitiesChart_vue_vue_type_template_id_26fe210e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/SalesDashboard/OpportunitiesChart.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/SalesDashboard/OpportunitiesChart.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/SalesDashboard/OpportunitiesChart.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_OpportunitiesChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./OpportunitiesChart.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SalesDashboard/OpportunitiesChart.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_OpportunitiesChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/SalesDashboard/OpportunitiesChart.vue?vue&type=template&id=26fe210e&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/SalesDashboard/OpportunitiesChart.vue?vue&type=template&id=26fe210e& ***!
+  \******************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OpportunitiesChart_vue_vue_type_template_id_26fe210e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./OpportunitiesChart.vue?vue&type=template&id=26fe210e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SalesDashboard/OpportunitiesChart.vue?vue&type=template&id=26fe210e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OpportunitiesChart_vue_vue_type_template_id_26fe210e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OpportunitiesChart_vue_vue_type_template_id_26fe210e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

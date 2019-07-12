@@ -1,11 +1,11 @@
 /*=====================================================
-=            Bar Chart Built from Chart.js            =
+=            Doughnut Chart Built from Chart.js            =
 =====================================================*/
 
-import { Bar } from 'vue-chartjs'
+import { Doughnut } from 'vue-chartjs'
 
 export default {
-  extends: Bar,
+  extends: Doughnut,
   props: {
     chartdata: {
       type: Object,

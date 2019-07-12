@@ -58,7 +58,7 @@ return [
     'storage'        => [
         'type'          => 'session', // 'session' or 'cache' are the two options
         'path'          => 'forrest_', // unique storage path to avoid collisions
-        'expire_in'     => 60, // number of minutes to expire cache/session
+        'expire_in'     => 120, // number of minutes to expire cache/session
         'store_forever' => false, // never expire cache/session
     ],
 

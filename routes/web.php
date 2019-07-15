@@ -15,9 +15,9 @@
  * All routes outside of Authentication
  *
  */
-Route::get('/', function () {
-	return view('welcome');
-});
+// Route::get('/', function () {
+// 	return view('welcome');
+// });
 /*----------  Authentication via Sales Force   ----------*/
 
 Route::get('/authenticate', function()
@@ -40,7 +40,7 @@ Route::middleware(['sf.login'])->group(function () {
 	    return view('start');
 	});
 
-	Route::get('/sales', 'DashboardController@show');
+	Route::get('/', 'DashboardController@show');
 
 
 }); //End Salesforce Middleware

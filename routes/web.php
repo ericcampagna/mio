@@ -19,8 +19,10 @@
 // 	return view('welcome');
 // });
 /*----------  Authentication via Sales Force   ----------*/
-
-Route::get('/authenticate', function()
+Route::get('/', function() {
+	return view('welcome');
+});
+Route::get('/login', function()
 {
     return Forrest::authenticate();
 });
@@ -40,7 +42,7 @@ Route::middleware(['sf.login'])->group(function () {
 	    return view('start');
 	});
 
-	Route::get('/', 'DashboardController@show');
+	Route::get('/sales', 'DashboardController@show');
 
 
 }); //End Salesforce Middleware

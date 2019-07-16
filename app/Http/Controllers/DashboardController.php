@@ -25,7 +25,7 @@ class DashboardController extends Controller
 
     public function opportunitiesData($userId = null)
     {
-    	if(!$userId) { $userId = '0051K000007qwOiQAI'; }
+    	if(!$userId) { $userId = '00541000003NqYgAAK'; }
     	
     	$user = User::find($userId);
 
@@ -83,7 +83,7 @@ class DashboardController extends Controller
 
     public function opportunitiesDataAll($userId = null)
     {
-    	if(!$userId) { $userId = '0051K000007qwOiQAI'; }
+    	if(!$userId) { $userId = '00541000003NqYgAAK'; }
     	
     	$user = User::find($userId);
 
@@ -96,7 +96,7 @@ class DashboardController extends Controller
 
     public function loggedCalls($requestType)
     {
-    	$userId = '0051K000007qwOiQAI';
+    	$userId = '00541000003NqYgAAK';
     	$cYear = date('Y');
 
     	$tasks = Forrest::query("SELECT Id,CreatedDate,Subject,WhoId,Description,TaskSubtype,Account.Name,Who.Type,Who.Name,Owner.Alias, TYPEOF What WHEN Opportunity THEN StageName WHEN Account THEN TYPE END FROM Task WHERE What.Type IN ('Acount', 'Opportunity') AND OwnerId='".$userId."' AND CALENDAR_YEAR(CreatedDate) = ".$cYear."  AND (TaskSubtype='Call' OR Subject LIKE 'Email:%') ORDER BY CreatedDate DESC");
@@ -156,7 +156,7 @@ class DashboardController extends Controller
 
 	    	$dataSets = [
 	    		[
-	    			'backgroundColor' => ['#16253C','#304467','#4E6693','#708ABF','#96AFEA'],
+	    			'backgroundColor' => ['#04344E','#255A7C','#4D82AA','#7BACD4','#AFD7FB'],
 	    			'data' => [count($NegotiationCalls),count($AccountCalls), count($ProposalCalls),count($QualificationCalls)]
 	    		],
 

@@ -27,6 +27,6 @@
         "chart.js": "^2.8.0",
         "datatables.net": "^1.10.19",
         "vue-chartjs": "^3.4.2",
-        "vue-csv-import": "^2.3.3"
+        "vue-csv-import": "^2.5.0"
     }
 }
